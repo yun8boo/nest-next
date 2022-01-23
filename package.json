@@ -5,12 +5,9 @@
   "scripts": {
     "backend": "yarn workspace backend",
     "frontend": "yarn workspace frontend",
-    "lint": "eslint .",
-    "lint:backend": "eslint ./app/backend",
-    "lint:frontend": "eslint ./app/frontend",
-    "codegen": "yarn frontend codegen && yarn eslint ./app/frontend/graphql --fix"
+    "codegen": "yarn frontend codegen && yarn eslint ./packages/frontend/graphql --fix"
   },
   "workspaces": [
-    "app/*"
+    "packages/*"
   ]
 }

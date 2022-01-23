@@ -7,7 +7,6 @@ import {
   Resolver,
   Root,
 } from '@nestjs/graphql';
-import e from 'express';
 import { GqlAuthGuard } from 'src/auth/jwt-gql-auth.guard';
 import { CurrentUser } from 'src/current-user/current-user.decorator';
 import { User } from 'src/users/models/user.model';
