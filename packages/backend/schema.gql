@@ -42,7 +42,13 @@ type Post {
 }
 
 input PostsOrderByInput {
-  updatedAt: SortType
+  updatedAt: PostsSortType
+}
+
+"""Properties by which post connections can be ordered."""
+enum PostsSortType {
+  asc
+  desc
 }
 
 type Query {
@@ -50,7 +56,7 @@ type Query {
   post(id: String!): Post!
   posts(orderBy: PostsOrderByInput, searchValue: String, skip: Float, take: Float): [Post!]!
   recipe(id: String!): Recipe!
-  recipes: [Recipe!]!
+  recipes(orderBy: RecipesOrderByInput, searchValue: String, skip: Float, take: Float): [Recipe!]!
   test: String!
   user(id: String!): User!
 }
@@ -64,8 +70,12 @@ type Recipe {
   updatedAt: DateTime!
 }
 
-"""Properties by which post connections can be ordered."""
-enum SortType {
+input RecipesOrderByInput {
+  updatedAt: RecipesSortType
+}
+
+"""Properties by which recipe connections can be ordered."""
+enum RecipesSortType {
   asc
   desc
 }

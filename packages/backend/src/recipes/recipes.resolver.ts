@@ -1,5 +1,6 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { CreateRecipeInput } from './dto/createRecipe.dto';
+import { RecipesOrderByInput } from './dto/recipesOrderBy.dto';
 import { UpdateRecipeInput } from './dto/updateRecipe.dto';
 import { Recipe } from './models/recipe.model';
 import { RecipesService } from './recipes.service';
@@ -19,8 +20,13 @@ export class RecipesResolver {
   }
 
   @Query((returns) => [Recipe])
-  async recipes() {
-    return this.recipesService.recipes({});
+  async recipes(
+    @Args('searchValue', { nullable: true }) searchValue?: string,
+    @Args('skip', { nullable: true }) skip?: number,
+    @Args('take', { nullable: true }) take?: number,
+    @Args('orderBy', { nullable: true }) orderBy?: RecipesOrderByInput,
+  ) {
+    return this.recipesService.recipes({ searchValue, skip, take, orderBy });
   }
 
   @Mutation((returns) => Recipe)

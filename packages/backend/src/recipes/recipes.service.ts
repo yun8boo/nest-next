@@ -6,14 +6,33 @@ import { PrismaService } from '../../prisma/prisma.service';
 export class RecipesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async recipes(params: {
+  async recipes({
+    searchValue,
+    skip,
+    take,
+    orderBy,
+  }: {
+    searchValue?: string;
     skip?: number;
     take?: number;
     cursor?: Prisma.RecipeWhereUniqueInput;
-    where?: Prisma.RecipeWhereInput;
     orderBy?: Prisma.RecipeOrderByWithRelationInput;
   }): Promise<Recipe[]> {
-    return this.prisma.recipe.findMany(params);
+    const or: Prisma.Enumerable<Prisma.RecipeWhereInput> = searchValue
+      ? {
+          OR: [
+            {
+              title: { contains: searchValue },
+            },
+          ],
+        }
+      : {};
+    return this.prisma.recipe.findMany({
+      where: { ...or },
+      skip,
+      take,
+      orderBy,
+    });
   }
   async recipe(
     recipeWhereUniqueInput: Prisma.RecipeWhereUniqueInput,

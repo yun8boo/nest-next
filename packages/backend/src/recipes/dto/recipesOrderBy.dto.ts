@@ -3,7 +3,7 @@ import { Field, InputType, registerEnumType } from '@nestjs/graphql';
 // type SortType = 'asc' | 'desc';
 
 @InputType()
-export class PostsOrderByInput {
+export class RecipesOrderByInput {
   @Field((type) => SortType, { nullable: true })
   updatedAt: SortType;
 }
@@ -14,6 +14,6 @@ enum SortType {
 }
 
 registerEnumType(SortType, {
-  name: 'PostsSortType',
-  description: 'Properties by which post connections can be ordered.',
+  name: 'RecipesSortType',
+  description: 'Properties by which recipe connections can be ordered.',
 });

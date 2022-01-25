@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "backend": "yarn workspace backend",
-    "frontend": "yarn workspace frontend",
-    "codegen": "yarn frontend codegen && yarn eslint ./packages/frontend/graphql --fix"
+    "frontend": "yarn workspace frontend"
   },
   "workspaces": [
     "packages/*"
