@@ -8,8 +8,6 @@ import { CurrentUserModule } from './current-user/current-user.module';
 import { PasswordService } from './password/password.service';
 import { PostsModule } from './posts/posts.module';
 
-console.log(process.cwd());
-
 @Module({
   imports: [
     GraphQLModule.forRoot({

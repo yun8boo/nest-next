@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   await prisma.user.deleteMany();
+  await prisma.recipe.deleteMany();
 
   console.log('Seeding...');
 
@@ -23,7 +24,20 @@ async function main() {
     },
   });
 
-  console.log({ user1, user2 });
+  const recipe1 = await prisma.recipe.create({
+    data: {
+      title: '肉じゃが',
+      description: 'ほかほか',
+    },
+  });
+  const recipe2 = await prisma.recipe.create({
+    data: {
+      title: '親子丼',
+      description: 'ほっかほか',
+    },
+  });
+
+  console.log({ user1, user2, recipe1, recipe2 });
 }
 
 main()

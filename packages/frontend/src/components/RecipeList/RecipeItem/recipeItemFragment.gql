@@ -1,0 +1,5 @@
+fragment RecipeItem on Recipe {
+  id
+  title
+  createdAt
+}
