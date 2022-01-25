@@ -1,1 +1,1 @@
-export { RecipeItem, RecipeItemFragment } from './RecipeItem';
+export { RecipeItem } from './RecipeItem';
