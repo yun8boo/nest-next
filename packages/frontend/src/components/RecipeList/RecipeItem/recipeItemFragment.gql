@@ -1,5 +1,7 @@
 fragment RecipeItem on Recipe {
   id
   title
+  description
   createdAt
+  updatedAt
 }

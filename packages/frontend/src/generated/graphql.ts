@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -40,26 +46,21 @@ export type Mutation = {
   updateRecipe: Recipe;
 };
 
-
 export type MutationCreatePostArgs = {
   createPostInput: CreatePostInput;
 };
-
 
 export type MutationCreateRecipeArgs = {
   createRecipeInput: CreateRecipeInput;
 };
 
-
 export type MutationDeletePostArgs = {
   deletePostInput: DeletePostInput;
 };
 
-
 export type MutationUpdatePostArgs = {
   updatePostInput: UpdatePostInput;
 };
-
 
 export type MutationUpdateRecipeArgs = {
   updateRecipeInput: UpdateRecipeInput;
@@ -85,7 +86,7 @@ export type PostsOrderByInput = {
 /** Properties by which post connections can be ordered. */
 export enum PostsSortType {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type Query = {
@@ -99,11 +100,9 @@ export type Query = {
   user: User;
 };
 
-
 export type QueryPostArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryPostsArgs = {
   orderBy?: InputMaybe<PostsOrderByInput>;
@@ -112,11 +111,9 @@ export type QueryPostsArgs = {
   take?: InputMaybe<Scalars['Float']>;
 };
 
-
 export type QueryRecipeArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryRecipesArgs = {
   orderBy?: InputMaybe<RecipesOrderByInput>;
@@ -124,7 +121,6 @@ export type QueryRecipesArgs = {
   skip?: InputMaybe<Scalars['Float']>;
   take?: InputMaybe<Scalars['Float']>;
 };
-
 
 export type QueryUserArgs = {
   id: Scalars['String'];
@@ -147,7 +143,7 @@ export type RecipesOrderByInput = {
 /** Properties by which recipe connections can be ordered. */
 export enum RecipesSortType {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type UpdatePostInput = {
@@ -174,27 +170,46 @@ export type User = {
   updatedAt: Scalars['DateTime'];
 };
 
-export type RecipeItemFragment = { __typename?: 'Recipe', id: string, title: string, createdAt: any };
+export type RecipeItemFragment = {
+  __typename?: 'Recipe';
+  id: string;
+  title: string;
+  description?: string | null | undefined;
+  createdAt: any;
+  updatedAt: any;
+};
 
-export type RecipesQueryVariables = Exact<{ [key: string]: never; }>;
+export type RecipesQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type RecipesQuery = { __typename?: 'Query', recipes: Array<{ __typename?: 'Recipe', id: string, title: string, createdAt: any }> };
+export type RecipesQuery = {
+  __typename?: 'Query';
+  recipes: Array<{
+    __typename?: 'Recipe';
+    id: string;
+    title: string;
+    description?: string | null | undefined;
+    createdAt: any;
+    updatedAt: any;
+  }>;
+};
 
 export const RecipeItemFragmentDoc = gql`
-    fragment RecipeItem on Recipe {
-  id
-  title
-  createdAt
-}
-    `;
-export const RecipesDocument = gql`
-    query recipes {
-  recipes {
-    ...RecipeItem
+  fragment RecipeItem on Recipe {
+    id
+    title
+    description
+    createdAt
+    updatedAt
   }
-}
-    ${RecipeItemFragmentDoc}`;
+`;
+export const RecipesDocument = gql`
+  query recipes {
+    recipes {
+      ...RecipeItem
+    }
+  }
+  ${RecipeItemFragmentDoc}
+`;
 
 /**
  * __useRecipesQuery__
@@ -211,14 +226,27 @@ export const RecipesDocument = gql`
  *   },
  * });
  */
-export function useRecipesQuery(baseOptions?: Apollo.QueryHookOptions<RecipesQuery, RecipesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<RecipesQuery, RecipesQueryVariables>(RecipesDocument, options);
-      }
-export function useRecipesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecipesQuery, RecipesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<RecipesQuery, RecipesQueryVariables>(RecipesDocument, options);
-        }
+export function useRecipesQuery(
+  baseOptions?: Apollo.QueryHookOptions<RecipesQuery, RecipesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<RecipesQuery, RecipesQueryVariables>(
+    RecipesDocument,
+    options
+  );
+}
+export function useRecipesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<RecipesQuery, RecipesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<RecipesQuery, RecipesQueryVariables>(
+    RecipesDocument,
+    options
+  );
+}
 export type RecipesQueryHookResult = ReturnType<typeof useRecipesQuery>;
 export type RecipesLazyQueryHookResult = ReturnType<typeof useRecipesLazyQuery>;
-export type RecipesQueryResult = Apollo.QueryResult<RecipesQuery, RecipesQueryVariables>;
+export type RecipesQueryResult = Apollo.QueryResult<
+  RecipesQuery,
+  RecipesQueryVariables
+>;
