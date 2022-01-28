@@ -1,5 +1,16 @@
+import { gql } from '@apollo/client';
 import { useRecipesQuery } from "@/generated/graphql"
-import { RecipeItem } from "./RecipeItem"
+import { RecipeItem,  recipeItemFragment} from "./RecipeItem"
+
+export const recipesQuery = gql`
+  ${recipeItemFragment}
+  query recipes {
+    recipes {
+      ...RecipeItem
+    }
+  }
+`;
+
 
 export const RecipeList = () => {
   const {data, error, loading} = useRecipesQuery()

@@ -1,6 +1,17 @@
 import { RecipeItemFragment } from "@/generated/graphql"
+import { gql } from "@apollo/client";
 
-export const RecipeItem = ({id, title, createdAt}: RecipeItemFragment) => {
+export const recipeItemFragment = gql`
+  fragment RecipeItem on Recipe {
+    id
+    title
+    description
+    createdAt
+    updatedAt
+  }
+`;
+
+export const RecipeItem = ({id, title, description, createdAt, updatedAt}: RecipeItemFragment) => {
   return (
     <div>
       <p>RecipeItem</p>
