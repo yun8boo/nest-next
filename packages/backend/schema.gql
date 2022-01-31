@@ -54,9 +54,9 @@ enum PostsSortType {
 type Query {
   currentUser: User!
   post(id: String!): Post!
-  posts(orderBy: PostsOrderByInput, searchValue: String, skip: Float, take: Float): [Post!]!
+  posts(orderBy: PostsOrderByInput, searchValue: String, skip: Int, take: Int): [Post!]!
   recipe(id: String!): Recipe!
-  recipes(orderBy: RecipesOrderByInput, searchValue: String, skip: Float, take: Float): [Recipe!]!
+  recipes(orderBy: RecipesOrderByInput, searchValue: String, skip: Int, take: Int): [Recipe!]!
   test: String!
   user(id: String!): User!
 }

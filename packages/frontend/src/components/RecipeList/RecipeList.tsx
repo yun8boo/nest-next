@@ -4,8 +4,8 @@ import { RecipeItem,  recipeItemFragment} from "./RecipeItem"
 
 export const recipesQuery = gql`
   ${recipeItemFragment}
-  query recipes {
-    recipes {
+  query recipes ($orderBy: RecipesOrderByInput, $searchValue: String, $skip: Int, $take: Int) {
+    recipes(orderBy: $orderBy, searchValue: $searchValue, skip: $skip, take: $take) {
       ...RecipeItem
     }
   }

@@ -11,13 +11,15 @@ export const recipeItemFragment = gql`
   }
 `;
 
-export const RecipeItem = ({id, title, description, createdAt, updatedAt}: RecipeItemFragment) => {
+export const RecipeItem = ({id, title, description, createdAt, updatedAt,}: RecipeItemFragment) => {
   return (
     <div>
       <p>RecipeItem</p>
       <p>ID: {id}</p>
       <p>title: {title}</p>
+      <p>description: {description}</p>
       <p>createdAt: {createdAt}</p>
+      <p>updatedAt: {updatedAt}</p>
     </div>
   )
 }

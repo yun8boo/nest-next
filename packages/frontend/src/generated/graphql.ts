@@ -108,8 +108,8 @@ export type QueryPostArgs = {
 export type QueryPostsArgs = {
   orderBy?: InputMaybe<PostsOrderByInput>;
   searchValue?: InputMaybe<Scalars['String']>;
-  skip?: InputMaybe<Scalars['Float']>;
-  take?: InputMaybe<Scalars['Float']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -121,8 +121,8 @@ export type QueryRecipeArgs = {
 export type QueryRecipesArgs = {
   orderBy?: InputMaybe<RecipesOrderByInput>;
   searchValue?: InputMaybe<Scalars['String']>;
-  skip?: InputMaybe<Scalars['Float']>;
-  take?: InputMaybe<Scalars['Float']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -174,9 +174,21 @@ export type User = {
   updatedAt: Scalars['DateTime'];
 };
 
+export type RecipeQueryVariables = Exact<{
+  recipeId: Scalars['String'];
+}>;
+
+
+export type RecipeQuery = { __typename?: 'Query', recipe: { __typename?: 'Recipe', id: string, title: string, description?: string | null | undefined } };
+
 export type RecipeItemFragment = { __typename?: 'Recipe', id: string, title: string, description?: string | null | undefined, createdAt: any, updatedAt: any };
 
-export type RecipesQueryVariables = Exact<{ [key: string]: never; }>;
+export type RecipesQueryVariables = Exact<{
+  orderBy?: InputMaybe<RecipesOrderByInput>;
+  searchValue?: InputMaybe<Scalars['String']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+}>;
 
 
 export type RecipesQuery = { __typename?: 'Query', recipes: Array<{ __typename?: 'Recipe', id: string, title: string, description?: string | null | undefined, createdAt: any, updatedAt: any }> };
@@ -195,9 +207,46 @@ export const RecipeItemFragmentDoc = gql`
   updatedAt
 }
     `;
+export const RecipeDocument = gql`
+    query recipe($recipeId: String!) {
+  recipe(id: $recipeId) {
+    id
+    title
+    description
+  }
+}
+    `;
+
+/**
+ * __useRecipeQuery__
+ *
+ * To run a query within a React component, call `useRecipeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRecipeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecipeQuery({
+ *   variables: {
+ *      recipeId: // value for 'recipeId'
+ *   },
+ * });
+ */
+export function useRecipeQuery(baseOptions: Apollo.QueryHookOptions<RecipeQuery, RecipeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RecipeQuery, RecipeQueryVariables>(RecipeDocument, options);
+      }
+export function useRecipeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecipeQuery, RecipeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RecipeQuery, RecipeQueryVariables>(RecipeDocument, options);
+        }
+export type RecipeQueryHookResult = ReturnType<typeof useRecipeQuery>;
+export type RecipeLazyQueryHookResult = ReturnType<typeof useRecipeLazyQuery>;
+export type RecipeQueryResult = Apollo.QueryResult<RecipeQuery, RecipeQueryVariables>;
 export const RecipesDocument = gql`
-    query recipes {
-  recipes {
+    query recipes($orderBy: RecipesOrderByInput, $searchValue: String, $skip: Int, $take: Int) {
+  recipes(orderBy: $orderBy, searchValue: $searchValue, skip: $skip, take: $take) {
     ...RecipeItem
   }
 }
@@ -215,6 +264,10 @@ export const RecipesDocument = gql`
  * @example
  * const { data, loading, error } = useRecipesQuery({
  *   variables: {
+ *      orderBy: // value for 'orderBy'
+ *      searchValue: // value for 'searchValue'
+ *      skip: // value for 'skip'
+ *      take: // value for 'take'
  *   },
  * });
  */

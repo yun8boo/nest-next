@@ -1,6 +1,7 @@
 import { UseGuards } from '@nestjs/common';
 import {
   Args,
+  Int,
   Mutation,
   Query,
   ResolveField,
@@ -29,8 +30,8 @@ export class PostsResolver {
   @Query(() => [Post])
   async posts(
     @Args('searchValue', { nullable: true }) searchValue?: string,
-    @Args('skip', { nullable: true }) skip?: number,
-    @Args('take', { nullable: true }) take?: number,
+    @Args('skip', { nullable: true, type: () => Int }) skip?: number,
+    @Args('take', { nullable: true, type: () => Int }) take?: number,
     @Args('orderBy', { nullable: true }) orderBy?: PostsOrderByInput,
   ) {
     return this.postsService.findAll({ searchValue, skip, take, orderBy });
