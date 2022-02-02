@@ -11,7 +11,11 @@ export const recipeQuery = gql`
   }
 `
 
-export const Recipe = (id: string) => {
+interface Props {
+  id: string
+}
+
+export const Recipe = ({id}: Props) => {
   const {data, error, loading} = useRecipeQuery({variables: {recipeId: id}})
   return (
     <div>
