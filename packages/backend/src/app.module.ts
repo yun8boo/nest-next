@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { RecipesModule } from './recipes/recipes.module';
@@ -10,6 +11,7 @@ import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     GraphQLModule.forRoot({
       debug: true,
       playground: true,
