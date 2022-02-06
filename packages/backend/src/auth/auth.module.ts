@@ -9,6 +9,8 @@ import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { AuthResolver } from './auth.resolver';
 import { PasswordService } from 'src/password/password.service';
+import { GoogleOauthStrategy } from './google-oauth.strategy';
+import { GoogleOauthController } from './google-oauth.controller';
 
 @Module({
   imports: [
@@ -25,7 +27,8 @@ import { PasswordService } from 'src/password/password.service';
     JwtStrategy,
     AuthResolver,
     PasswordService,
+    GoogleOauthStrategy,
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, GoogleOauthController],
 })
 export class AuthModule {}

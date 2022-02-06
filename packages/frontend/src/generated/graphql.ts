@@ -193,7 +193,9 @@ export type RecipesQueryVariables = Exact<{
 
 export type RecipesQuery = { __typename?: 'Query', recipes: Array<{ __typename?: 'Recipe', id: string, title: string, description?: string | null | undefined, createdAt: any, updatedAt: any }> };
 
-export type UserQueryVariables = Exact<{ [key: string]: never; }>;
+export type UserQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
 
 
 export type UserQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, email: string, posts?: Array<{ __typename?: 'Post', id: string, title: string }> | null | undefined } };
@@ -283,8 +285,8 @@ export type RecipesQueryHookResult = ReturnType<typeof useRecipesQuery>;
 export type RecipesLazyQueryHookResult = ReturnType<typeof useRecipesLazyQuery>;
 export type RecipesQueryResult = Apollo.QueryResult<RecipesQuery, RecipesQueryVariables>;
 export const UserDocument = gql`
-    query user {
-  user(id: "ckysd3b2t0004vzuwnetxasrt") {
+    query user($userId: String!) {
+  user(id: $userId) {
     id
     email
     posts {
@@ -307,10 +309,11 @@ export const UserDocument = gql`
  * @example
  * const { data, loading, error } = useUserQuery({
  *   variables: {
+ *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useUserQuery(baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options);
       }

@@ -11,7 +11,9 @@ import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     GraphQLModule.forRoot({
       debug: true,
       playground: true,

@@ -1,10 +1,11 @@
+import { useUserQuery } from "@/generated/graphql";
 import { useQuery, gql } from "@apollo/client";
 import type { NextPage } from "next";
 import Head from "next/head";
 
 const USER = gql`
-  query user {
-    user(id: "ckysd3b2t0004vzuwnetxasrt") {
+  query user($userId: String!) {
+    user(id: $userId) {
       id
       email
       posts {
@@ -16,8 +17,7 @@ const USER = gql`
 `;
 
 const Home: NextPage = () => {
-  const { data, error, loading } = useQuery(USER);
-  console.log({ data, error, loading });
+  const { data, error, loading } = useUserQuery({variables: {userId: "ckysd3b2t0004vzuwnetxasrt"}});
   return (
     <div>
       <Head>
