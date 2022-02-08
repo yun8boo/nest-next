@@ -136,7 +136,18 @@ export type Recipe = {
   createdAt: Scalars['DateTime'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  tags: Array<RecipeTag>;
   title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+};
+
+/** recipe-tag */
+export type RecipeTag = {
+  __typename?: 'RecipeTag';
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  recipes: Array<Recipe>;
   updatedAt: Scalars['DateTime'];
 };
 
