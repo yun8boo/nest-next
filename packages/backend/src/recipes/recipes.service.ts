@@ -27,11 +27,15 @@ export class RecipesService {
           ],
         }
       : {};
+
     return this.prisma.recipe.findMany({
       where: { ...or },
       skip,
       take,
       orderBy,
+      include: {
+        recipeTags: true,
+      },
     });
   }
   async recipe(

@@ -1,13 +1,26 @@
-import { Resolver, Query, Args, Mutation, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Args,
+  Mutation,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import { RecipeTag } from 'src/recipe-tags/models/recipe-tag.model';
+import { RecipeTagsService } from 'src/recipe-tags/recipe-tags.service';
 import { CreateRecipeInput } from './dto/createRecipe.dto';
 import { RecipesOrderByInput } from './dto/recipesOrderBy.dto';
 import { UpdateRecipeInput } from './dto/updateRecipe.dto';
 import { Recipe } from './models/recipe.model';
 import { RecipesService } from './recipes.service';
 
-@Resolver()
+@Resolver(() => Recipe)
 export class RecipesResolver {
-  constructor(private readonly recipesService: RecipesService) {}
+  constructor(
+    private readonly recipesService: RecipesService,
+    private readonly recipeTagsService: RecipeTagsService,
+  ) {}
 
   @Query(() => String)
   async test() {
@@ -27,6 +40,19 @@ export class RecipesResolver {
     @Args('orderBy', { nullable: true }) orderBy?: RecipesOrderByInput,
   ) {
     return this.recipesService.recipes({ searchValue, skip, take, orderBy });
+  }
+
+  @ResolveField(() => [RecipeTag])
+  async tags(@Parent() recipe: Recipe) {
+    return this.recipeTagsService.recipeTags({
+      where: {
+        recipes: {
+          every: {
+            id: recipe.id,
+          },
+        },
+      },
+    });
   }
 
   @Mutation((returns) => Recipe)

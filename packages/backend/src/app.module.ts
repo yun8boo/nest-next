@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { CurrentUserModule } from './current-user/current-user.module';
 import { PasswordService } from './password/password.service';
 import { PostsModule } from './posts/posts.module';
+import { RecipeTagsModule } from './recipe-tags/recipe-tags.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PostsModule } from './posts/posts.module';
     UsersModule,
     CurrentUserModule,
     PostsModule,
+    RecipeTagsModule,
   ],
   providers: [PasswordService],
 })

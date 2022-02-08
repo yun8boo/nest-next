@@ -1,9 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { RecipeTag } from 'src/recipe-tags/models/recipe-tag.model';
 
 @ObjectType({ description: 'recipe' })
 export class Recipe {
-  @Field((tyoe) => ID)
-  id: number;
+  @Field((type) => ID)
+  id: string;
 
   @Field()
   title: string;
@@ -16,4 +17,7 @@ export class Recipe {
 
   @Field()
   updatedAt: Date;
+
+  @Field((type) => [RecipeTag]!)
+  tags: RecipeTag[];
 }

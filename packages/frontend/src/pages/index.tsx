@@ -17,7 +17,6 @@ const USER = gql`
 `;
 
 const Home: NextPage = () => {
-  const { data, error, loading } = useUserQuery({variables: {userId: "ckysd3b2t0004vzuwnetxasrt"}});
   return (
     <div>
       <Head>

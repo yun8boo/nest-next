@@ -11,11 +11,28 @@ datasource db {
 }
 
 model Recipe {
-  id          String   @id @default(cuid())
-  title       String   @unique
+  id          String       @id @default(cuid())
+  title       String       @unique
   description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @default(now())
+  recipeTags  RecipeTags[]
+}
+
+model RecipeTags {
+  id          String    @id @default(cuid())
+  recipeId    String
+  recipe      Recipe    @relation(fields: [recipeId], references: [id])
+  recipeTagId String
+  recipeTag   RecipeTag @relation(fields: [recipeTagId], references: [id])
+}
+
+model RecipeTag {
+  id        String       @id @default(cuid())
+  name      String       @unique
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+  recipes   RecipeTags[]
 }
 
 model User {

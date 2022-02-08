@@ -3,7 +3,7 @@ import { User } from 'src/users/models/user.model';
 
 @ObjectType({ description: 'post' })
 export class Post {
-  @Field((tyoe) => String)
+  @Field((type) => String)
   id: string;
 
   @Field()

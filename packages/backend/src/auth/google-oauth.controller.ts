@@ -25,6 +25,6 @@ export class GoogleOauthController {
         sameSite: 'strict',
       },
     );
-    return res.json(accessToken);
+    return res.redirect('http://localhost:4000/');
   }
 }
