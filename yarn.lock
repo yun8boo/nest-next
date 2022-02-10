@@ -26,6 +26,30 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
+"@angular-devkit/core@13.1.4":
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.1.4.tgz#b5b6ddd674ae351f83beff2e4a0d702096bdfd47"
+  integrity sha512-225Gjy4iVxh5Jo9njJnaG75M/Dt95UW+dEPCGWKV5E/++7UUlXlo9sNWq8x2vJm2nhtsPkpnXNOt4pW1mIDwqQ==
+  dependencies:
+    ajv "8.8.2"
+    ajv-formats "2.1.1"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/core@13.2.2", "@angular-devkit/core@^13.1.3":
+  version "13.2.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.2.2.tgz#643a97991e25584cc7c54574c2aa4eee45cf40a0"
+  integrity sha512-qH0Vu8qwGD5uhmE8PtePA1lm7xL3JtbBCcrQICmLqD6njLDVb2N5pbdDXeiXDlWGUoIRHUhu6Uw4AsY8zXP/FA==
+  dependencies:
+    ajv "8.9.0"
+    ajv-formats "2.1.1"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
 "@angular-devkit/schematics-cli@13.1.2":
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-13.1.2.tgz#39d31b41c90dda71bb9e88c20b4c752ee02e1dbc"
@@ -55,6 +79,28 @@
   integrity sha512-ayYbHGU8QpMGx8ZyhKOBupz+Zfv/2H1pNQErahYV3qg7hA9hfjTGmNmDQ4iw0fiT04NajjUxuomlKsCsg7oXDw==
   dependencies:
     "@angular-devkit/core" "13.1.2"
+    jsonc-parser "3.0.0"
+    magic-string "0.25.7"
+    ora "5.4.1"
+    rxjs "6.6.7"
+
+"@angular-devkit/schematics@13.1.4":
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.4.tgz#e8ed817887aa51268dec27d8d6188e2f3f10742a"
+  integrity sha512-yBa7IeC4cLZ7s137NAQD+sMB5c6SI6UJ6xYxl6J/CvV2RLGOZZA93i4GuRALi5s82eLi1fH+HEL/gvf3JQynzQ==
+  dependencies:
+    "@angular-devkit/core" "13.1.4"
+    jsonc-parser "3.0.0"
+    magic-string "0.25.7"
+    ora "5.4.1"
+    rxjs "6.6.7"
+
+"@angular-devkit/schematics@^13.1.3":
+  version "13.2.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.2.2.tgz#034aa816a16cc372586c0c153c24dc4569b90f1e"
+  integrity sha512-kXPLTkSzRCeBX+SYUkC6MIrWCkH90Y8hVegR9R5n2YqhCJyE+dZlcx4d/8d3VHtZlzAs0LL8BU+liC3wMIagjA==
+  dependencies:
+    "@angular-devkit/core" "13.2.2"
     jsonc-parser "3.0.0"
     magic-string "0.25.7"
     ora "5.4.1"
@@ -1641,6 +1687,15 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@schematics/angular@~13.1.3":
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-13.1.4.tgz#8b8c9ad40403c485bae9adeb51649711651189d2"
+  integrity sha512-P1YsHn1LLAmdpB9X2TBuUgrvEW/KaoBbHr8ifYO8/uQEXyeiIF+So8h/dnegkYkdsr3OwQ2X/j3UF6/+HS0odg==
+  dependencies:
+    "@angular-devkit/core" "13.1.4"
+    "@angular-devkit/schematics" "13.1.4"
+    jsonc-parser "3.0.0"
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -2409,6 +2464,16 @@ ajv@8.8.2:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
+ajv@8.9.0, ajv@^8.0.0:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.9.0.tgz#738019146638824dea25edcf299dcba1b0e7eb18"
+  integrity sha512-qOKJyNj/h+OWx7s5DePL6Zu1KeM9jPZhwBqs+7DzP6bGOvqzVCSf0xueYmVuaC/oQ/VtS2zLMLHdQFbkka+XDQ==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
 ajv@^6.10.0, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -2417,16 +2482,6 @@ ajv@^6.10.0, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
-    uri-js "^4.2.2"
-
-ajv@^8.0.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.9.0.tgz#738019146638824dea25edcf299dcba1b0e7eb18"
-  integrity sha512-qOKJyNj/h+OWx7s5DePL6Zu1KeM9jPZhwBqs+7DzP6bGOvqzVCSf0xueYmVuaC/oQ/VtS2zLMLHdQFbkka+XDQ==
-  dependencies:
-    fast-deep-equal "^3.1.1"
-    json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 ansi-colors@4.1.1:
@@ -6356,6 +6411,15 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+nestjs-prisma@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/nestjs-prisma/-/nestjs-prisma-0.15.1.tgz#02e1cf441403513831b8993d9c796e9a83404611"
+  integrity sha512-3h22u0RsRwZt+p6WkXvR8wRJzpcnSieTBrxkcUV7UT2BfQmz/9QaGaOHqBEzow0+S3WpHja2hHFgQERHlWZ91Q==
+  dependencies:
+    "@angular-devkit/core" "^13.1.3"
+    "@angular-devkit/schematics" "^13.1.3"
+    "@schematics/angular" "~13.1.3"
 
 next@12.0.8:
   version "12.0.8"
