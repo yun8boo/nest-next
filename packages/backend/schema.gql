@@ -9,6 +9,7 @@ input CreatePostInput {
 
 input CreateRecipeInput {
   description: String
+  tagIds: [String!]
   title: String!
 }
 

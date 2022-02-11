@@ -7,4 +7,7 @@ export class CreateRecipeInput {
 
   @Field({ nullable: true })
   description?: string;
+
+  @Field(() => [String], { nullable: true })
+  tagIds?: string[];
 }

@@ -10,7 +10,7 @@ import { CurrentUserModule } from './current-user/current-user.module';
 import { PasswordService } from './password/password.service';
 import { PostsModule } from './posts/posts.module';
 import { RecipeTagsModule } from './recipe-tags/recipe-tags.module';
-import { loggingMiddleware } from './logging/logging.middleware';
+import { prismaLoggingMiddleware } from './logging/prisma.logging.middleware';
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import { loggingMiddleware } from './logging/logging.middleware';
     PrismaModule.forRoot({
       isGlobal: true,
       prismaServiceOptions: {
-        middlewares: [loggingMiddleware()],
+        middlewares: [prismaLoggingMiddleware()],
       },
     }),
     GraphQLModule.forRoot({

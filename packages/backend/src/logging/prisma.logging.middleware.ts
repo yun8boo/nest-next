@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 
-export function loggingMiddleware(): Prisma.Middleware {
+export function prismaLoggingMiddleware(): Prisma.Middleware {
   return async (params, next) => {
     const before = Date.now();
 

@@ -57,11 +57,17 @@ export class RecipesResolver {
 
   @Mutation((returns) => Recipe)
   async createRecipe(
-    @Args('createRecipeInput') { title, description }: CreateRecipeInput,
+    @Args('createRecipeInput')
+    { title, description, tagIds }: CreateRecipeInput,
   ) {
     return this.recipesService.createRecipe({
       title,
       description,
+      recipeTags: {
+        connect: tagIds.map((id) => ({
+          id,
+        })),
+      },
     });
   }
 
