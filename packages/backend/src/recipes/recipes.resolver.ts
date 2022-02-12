@@ -45,11 +45,9 @@ export class RecipesResolver {
   @ResolveField(() => [RecipeTag])
   async tags(@Parent() recipe: Recipe) {
     return this.recipeTagsService.recipeTags({
-      where: {
-        recipes: {
-          every: {
-            id: recipe.id,
-          },
+      recipes: {
+        every: {
+          id: recipe.id,
         },
       },
     });
