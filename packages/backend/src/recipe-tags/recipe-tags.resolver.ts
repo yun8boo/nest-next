@@ -12,12 +12,12 @@ export class RecipeTagsResolver {
   }
 
   @Query((returns) => [RecipeTag])
-  async recipeTags(@Args('name', { type: () => String }) name: string) {
+  async recipeTags() {
     return this.recipeTagsService.recipeTags();
   }
 
   @Mutation((returns) => RecipeTag)
-  async createRecipeTag() {
-    // return this.recipeTagsService.createRecipeTag();
+  async createRecipeTag(@Args('name', { type: () => String }) name: string) {
+    return this.recipeTagsService.createRecipeTag({ data: { name } });
   }
 }
