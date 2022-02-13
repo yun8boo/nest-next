@@ -25,7 +25,7 @@ input DeletePostInput {
 type Mutation {
   createPost(createPostInput: CreatePostInput!): Post!
   createRecipe(createRecipeInput: CreateRecipeInput!): Recipe!
-  createRecipeTag: RecipeTag!
+  createRecipeTag(name: String!): RecipeTag!
   deletePost(deletePostInput: DeletePostInput!): Post!
   updatePost(updatePostInput: UpdatePostInput!): Post!
   updateRecipe(updateRecipeInput: UpdateRecipeInput!): Recipe!
@@ -59,7 +59,7 @@ type Query {
   posts(orderBy: PostsOrderByInput, searchValue: String, skip: Int, take: Int): [Post!]!
   recipe(id: String!): Recipe!
   recipeTag(name: String!): RecipeTag!
-  recipeTags(name: String!): [RecipeTag!]!
+  recipeTags: [RecipeTag!]!
   recipes(orderBy: RecipesOrderByInput, searchValue: String, skip: Int, take: Int): [Recipe!]!
   test: String!
   user(id: String!): User!
