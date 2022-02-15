@@ -24,6 +24,7 @@ export type CreatePostInput = {
 
 export type CreateRecipeInput = {
   description?: InputMaybe<Scalars['String']>;
+  tagIds?: InputMaybe<Array<Scalars['String']>>;
   title: Scalars['String'];
 };
 
@@ -35,6 +36,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createPost: Post;
   createRecipe: Recipe;
+  createRecipeTag: RecipeTag;
   deletePost: Post;
   updatePost: Post;
   updateRecipe: Recipe;
@@ -48,6 +50,11 @@ export type MutationCreatePostArgs = {
 
 export type MutationCreateRecipeArgs = {
   createRecipeInput: CreateRecipeInput;
+};
+
+
+export type MutationCreateRecipeTagArgs = {
+  name: Scalars['String'];
 };
 
 
@@ -94,6 +101,8 @@ export type Query = {
   post: Post;
   posts: Array<Post>;
   recipe: Recipe;
+  recipeTag: RecipeTag;
+  recipeTags: Array<RecipeTag>;
   recipes: Array<Recipe>;
   test: Scalars['String'];
   user: User;
@@ -115,6 +124,11 @@ export type QueryPostsArgs = {
 
 export type QueryRecipeArgs = {
   id: Scalars['String'];
+};
+
+
+export type QueryRecipeTagArgs = {
+  name: Scalars['String'];
 };
 
 
