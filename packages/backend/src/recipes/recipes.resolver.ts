@@ -7,8 +7,8 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import { RecipeTag } from 'src/recipe-tags/models/recipe-tag.model';
-import { RecipeTagsService } from 'src/recipe-tags/recipe-tags.service';
+import { RecipeTag } from '../recipe-tags/models/recipe-tag.model';
+import { RecipeTagsService } from '../recipe-tags/recipe-tags.service';
 import { CreateRecipeInput } from './dto/createRecipe.dto';
 import { RecipesOrderByInput } from './dto/recipesOrderBy.dto';
 import { UpdateRecipeInput } from './dto/updateRecipe.dto';

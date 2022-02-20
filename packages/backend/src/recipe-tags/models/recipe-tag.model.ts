@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Recipe } from 'src/recipes/models/recipe.model';
+import { Recipe } from '../../recipes/models/recipe.model';
 
 @ObjectType({ description: 'recipe-tag' })
 export class RecipeTag {
